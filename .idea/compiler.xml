@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="MovieRatingStdDeviation" />
+        <module name="MovieSkewnessRating" />
+        <module name="MovieRatingAverage" />
+        <module name="MovieRatingCV" />
+        <module name="MovieMinMaxRating" />
+        <module name="MovieRatingChainJob" />
+        <module name="dene" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MovieMinimumRating" target="1.8" />
+      <module name="MovieRatingsCV" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

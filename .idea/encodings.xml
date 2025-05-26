@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/MovieMinMaxRating/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieMinMaxRating/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieMinimumRating/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieMinimumRating/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingAverage/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingAverage/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingCV/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingCV/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingChainJob/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingChainJob/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingStdDeviation/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingStdDeviation/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingsCV/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieRatingsCV/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieSkewnessRating/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MovieSkewnessRating/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dene/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dene/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
