@@ -47,18 +47,21 @@ public class MovieSkewnessRatingReducer extends Reducer<Text, FloatWritable, Tex
                 sumOfSquares += Math.pow(rating-mean,2);
             }
             stdDev = Math.sqrt(sumOfSquares/count);
-
-            // calculate mode
-            mode = 0;
-            float maxFrequentRating=-1;
-            for(Float rating : ratingsFrequentMap.keySet()){
-                if(ratingsFrequentMap.get(rating)>maxFrequentRating){
-                    mode = rating;
-                    maxFrequentRating = ratingsFrequentMap.get(rating);
+            if(stdDev == 0){
+                skewness = 0;
+            }else{
+                // calculate mode
+                mode = 0;
+                float maxFrequentRating=-1;
+                for(Float rating : ratingsFrequentMap.keySet()){
+                    if(ratingsFrequentMap.get(rating)>maxFrequentRating){
+                        mode = rating;
+                        maxFrequentRating = ratingsFrequentMap.get(rating);
+                    }
                 }
-            }
 
-            skewness = (mean-mode)/stdDev;
+                skewness = (mean-mode)/stdDev;
+            }
             // write to local storage
             context.write(key, new DoubleWritable(skewness));
 
