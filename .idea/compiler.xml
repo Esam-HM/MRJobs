@@ -13,6 +13,7 @@
         <module name="MovieMinMaxRating" />
         <module name="MovieRatingChainJob" />
         <module name="dene" />
+        <module name="MovieRatingCount" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
