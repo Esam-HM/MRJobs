@@ -1,6 +1,5 @@
 package org;
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -9,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RatingCVReducer extends Reducer<Text, FloatWritable, Text, DoubleWritable> {
+public class RatingCVReducer extends Reducer<Text, FloatWritable, Text, Text> {
 
     public void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
         List<Float> ratingsList = new ArrayList<>();
@@ -27,7 +26,7 @@ public class RatingCVReducer extends Reducer<Text, FloatWritable, Text, DoubleWr
                 count++;
             }
 
-            if (count==0){
+            if (count==0 || ratingsSum==0){
                 CV = 0;
             }else{
                 mean = ratingsSum/(double)count;
@@ -41,7 +40,7 @@ public class RatingCVReducer extends Reducer<Text, FloatWritable, Text, DoubleWr
                 CV = (stdDev/mean)*100;
             }
 
-            context.write(key, new DoubleWritable(CV));
+            context.write(key, new Text(String.format("%.4f",CV)+"%"));
 
         }catch (Exception e){
             System.out.println("Error Happened in Reducer. Message: "+ e.getMessage());

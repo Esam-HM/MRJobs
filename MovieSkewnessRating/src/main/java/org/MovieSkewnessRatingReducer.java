@@ -1,7 +1,6 @@
 package org;
 
 
-import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -12,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MovieSkewnessRatingReducer extends Reducer<Text, FloatWritable, Text, DoubleWritable> {
+public class MovieSkewnessRatingReducer extends Reducer<Text, FloatWritable, Text, Text> {
 
     public void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
         // mean, std-dev, mode
@@ -39,14 +38,20 @@ public class MovieSkewnessRatingReducer extends Reducer<Text, FloatWritable, Tex
                         _rating, ratingsFrequentMap.getOrDefault(_rating,0)+1
                 );
             }
-            mean = sum/(double)count;
+            if(count == 0){
+                mean = 0;
+                stdDev = 0;
+            }else{
+                mean = sum/(double)count;
 
-            // calculate stdDev
-            double sumOfSquares=0;
-            for(Float rating: ratingsList){
-                sumOfSquares += Math.pow(rating-mean,2);
+                // calculate stdDev
+                double sumOfSquares=0;
+                for(Float rating: ratingsList){
+                    sumOfSquares += Math.pow(rating-mean,2);
+                }
+                stdDev = Math.sqrt(sumOfSquares/count);
             }
-            stdDev = Math.sqrt(sumOfSquares/count);
+
             if(stdDev == 0){
                 skewness = 0;
             }else{
@@ -63,7 +68,7 @@ public class MovieSkewnessRatingReducer extends Reducer<Text, FloatWritable, Tex
                 skewness = (mean-mode)/stdDev;
             }
             // write to local storage
-            context.write(key, new DoubleWritable(skewness));
+            context.write(key, new Text(String.format("%.4f",skewness)));
 
         }catch (ArithmeticException e){
             System.out.println("Arithmetic Error happened in reducer. Message: " + e.getMessage());
